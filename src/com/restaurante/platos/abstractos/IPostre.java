@@ -1,2 +1,6 @@
-package com.restaurante.platos.abstractos;public interface IPostre {
+package com.restaurante.platos.abstractos;
+
+public interface IPostre {
+    String obtenerNombre();
+    String obtenerDescripcion();
 }

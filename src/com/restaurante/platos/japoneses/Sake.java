@@ -1,8 +1,9 @@
 package com.restaurante.platos.japoneses;
+
 import com.restaurante.platos.abstractos.IBebida;
 
 
-public class Sake {
+public class Sake implements IBebida {
 
     @Override
     public String obtenerNombre() {

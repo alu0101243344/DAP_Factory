@@ -3,25 +3,25 @@ package com.restaurante.fabricas;
 import com.restaurante.platos.abstractos.*;
 import com.restaurante.platos.japoneses.*;
 
-public class FactoriaMenuJapones {
+public class FactoriaMenuJapones implements IFactoriaMenu {
 
     @Override
-    public PlatoPollo crearPlatoPollo() {
+    public IPlatoPollo crearPlatoPollo() {
         return new Yakitori();
     }
 
     @Override
-    public PlatoPescado crearPlatoPescado() {
+    public IPlatoPescado crearPlatoPescado() {
         return new Sushi();
     }
 
     @Override
-    public Bebida crearBebida() {
+    public IBebida crearBebida() {
         return new Sake();
     }
 
     @Override
-    public Postre crearPostre() {
+    public IPostre crearPostre() {
         return new Mochi();
     }
 

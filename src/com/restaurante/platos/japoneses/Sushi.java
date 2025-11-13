@@ -2,7 +2,7 @@ package com.restaurante.platos.japoneses;
 
 import com.restaurante.platos.abstractos.IPlatoPescado;
 
-public class Sushi {
+public class Sushi implements IPlatoPescado {
     @Override
     public String obtenerNombre() {
         return "Sushi Variado";

@@ -2,7 +2,7 @@ package com.restaurante.platos.japoneses;
 
 import com.restaurante.platos.abstractos.IPostre;
 
-public class Mochi {
+public class Mochi implements IPostre {
 
     @Override
     public String obtenerNombre() {

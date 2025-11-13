@@ -1,7 +1,7 @@
 package com.restaurante.platos.japoneses;
 
 import com.restaurante.platos.abstractos.IPlatoPollo;
-public class Yakitori {
+public class Yakitori implements IPlatoPollo {
     @Override
     public String obtenerNombre() {
         return "Yakitori";

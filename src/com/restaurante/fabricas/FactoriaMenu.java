@@ -1,9 +1,9 @@
 package com.restaurante.fabricas;
 
-import com.restaurante.platos.abstractos.Bebida;
-import com.restaurante.platos.abstractos.PlatoPescado;
-import com.restaurante.platos.abstractos.PlatoPollo;
-import com.restaurante.platos.abstractos.Postre;
+import com.restaurante.platos.abstractos.IBebida;
+import com.restaurante.platos.abstractos.IPlatoPescado;
+import com.restaurante.platos.abstractos.IPlatoPollo;
+import com.restaurante.platos.abstractos.IPostre;
 
 public interface FactoriaMenu {
     PlatoPollo crearPlatoPollo();

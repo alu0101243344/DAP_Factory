@@ -1,0 +1,174 @@
+@startuml
+interface com.restaurante.platos.abstractos.IPostre {
+~ String obtenerNombre()
+~ String obtenerDescripcion()
+~ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.espanoles.Sangria {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.mexicanos.FlanDeCajeta {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.espanoles.MerluzaEnSalsaVerde {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.cliente.ClienteGUI {
+- JLabel etiquetaNombrePollo
+- JLabel etiquetaDescPollo
+- JLabel etiquetaImgPollo
+- JPanel crearPanelPlato(JLabel,JLabel,JLabel)
+- void mostrarMenu(IFactoriaMenu)
+- ImageIcon cargarImagen(String,int,int)
++ {static} void main(String[])
+}
+
+
+class com.restaurante.fabricas.FactoriaMenuJapones {
++ IPlatoPollo crearPlatoPollo()
++ IPlatoPescado crearPlatoPescado()
++ IBebida crearBebida()
++ IPostre crearPostre()
+}
+
+class com.restaurante.platos.espanoles.CremaCatalana {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+interface com.restaurante.platos.abstractos.IBebida {
+~ String obtenerNombre()
+~ String obtenerDescripcion()
+~ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.mexicanos.Margarita {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+interface com.restaurante.platos.abstractos.IPlatoPescado {
+~ String obtenerNombre()
+~ String obtenerDescripcion()
+~ String obtenerRutaImagen()
+}
+
+class com.restaurante.cliente.Menu {
+- IPlatoPollo pollo
+- IPlatoPescado pescado
+- IBebida bebida
+- IPostre postre
++ IPlatoPollo getPollo()
++ IPlatoPescado getPescado()
++ IBebida getBebida()
++ IPostre getPostre()
++ void imprimir()
+}
+
+
+class com.restaurante.platos.mexicanos.PolloPibil {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.japoneses.Sake {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.japoneses.Sushi {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.cliente.ClienteConsola {
++ {static} void main(String[])
+- {static} void mostrarOpciones()
+- {static} IFactoriaMenu obtenerFactoriaSegunEleccion(int)
+}
+
+interface com.restaurante.platos.abstractos.IPlatoPollo {
+~ String obtenerNombre()
+~ String obtenerDescripcion()
+~ String obtenerRutaImagen()
+}
+
+class com.restaurante.fabricas.FactoriaMenuMexicano {
++ IPlatoPollo crearPlatoPollo()
++ IPlatoPescado crearPlatoPescado()
++ IBebida crearBebida()
++ IPostre crearPostre()
+}
+
+class com.restaurante.platos.japoneses.Mochi {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.mexicanos.Ceviche {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+interface com.restaurante.fabricas.IFactoriaMenu {
+~ IPlatoPollo crearPlatoPollo()
+~ IPlatoPescado crearPlatoPescado()
+~ IBebida crearBebida()
+~ IPostre crearPostre()
+}
+
+class com.restaurante.fabricas.FactoriaMenuEspanol {
++ IPlatoPollo crearPlatoPollo()
++ IPlatoPescado crearPlatoPescado()
++ IBebida crearBebida()
++ IPostre crearPostre()
+}
+
+class com.restaurante.platos.espanoles.PolloAlAjillo {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+class com.restaurante.platos.japoneses.Yakitori {
++ String obtenerNombre()
++ String obtenerDescripcion()
++ String obtenerRutaImagen()
+}
+
+
+
+com.restaurante.platos.abstractos.IBebida <|.. com.restaurante.platos.espanoles.Sangria
+com.restaurante.platos.abstractos.IPostre <|.. com.restaurante.platos.mexicanos.FlanDeCajeta
+com.restaurante.platos.abstractos.IPlatoPescado <|.. com.restaurante.platos.espanoles.MerluzaEnSalsaVerde
+com.restaurante.cliente.JFrame <|-- com.restaurante.cliente.ClienteGUI
+com.restaurante.fabricas.IFactoriaMenu <|.. com.restaurante.fabricas.FactoriaMenuJapones
+com.restaurante.platos.abstractos.IPostre <|.. com.restaurante.platos.espanoles.CremaCatalana
+com.restaurante.platos.abstractos.IBebida <|.. com.restaurante.platos.mexicanos.Margarita
+com.restaurante.platos.abstractos.IPlatoPollo <|.. com.restaurante.platos.mexicanos.PolloPibil
+com.restaurante.platos.abstractos.IBebida <|.. com.restaurante.platos.japoneses.Sake
+com.restaurante.platos.abstractos.IPlatoPescado <|.. com.restaurante.platos.japoneses.Sushi
+com.restaurante.fabricas.IFactoriaMenu <|.. com.restaurante.fabricas.FactoriaMenuMexicano
+com.restaurante.platos.abstractos.IPostre <|.. com.restaurante.platos.japoneses.Mochi
+com.restaurante.platos.abstractos.IPlatoPescado <|.. com.restaurante.platos.mexicanos.Ceviche
+com.restaurante.fabricas.IFactoriaMenu <|.. com.restaurante.fabricas.FactoriaMenuEspanol
+com.restaurante.platos.abstractos.IPlatoPollo <|.. com.restaurante.platos.espanoles.PolloAlAjillo
+com.restaurante.platos.abstractos.IPlatoPollo <|.. com.restaurante.platos.japoneses.Yakitori
+@enduml

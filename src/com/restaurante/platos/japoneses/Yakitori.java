@@ -12,5 +12,10 @@ public class Yakitori implements IPlatoPollo {
         return "Brochetas de pollo a la parrilla con salsa teriyaki.";
     }
 
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/yakitori.png";
+    }
+
 }
 

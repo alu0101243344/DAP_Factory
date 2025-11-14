@@ -12,4 +12,8 @@ public class PolloPibil implements IPlatoPollo {
     public String obtenerDescripcion() {
         return "Pollo marinado en achiote, envuelto en hoja de plátano y cocido lentamente.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/pollopibil.png";
+    }
 }

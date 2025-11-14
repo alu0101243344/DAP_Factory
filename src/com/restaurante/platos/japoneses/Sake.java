@@ -14,5 +14,9 @@ public class Sake implements IBebida {
     public String obtenerDescripcion() {
         return "Bebida de arroz fermentado tradicional.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/sake.png";
+    }
 
 }

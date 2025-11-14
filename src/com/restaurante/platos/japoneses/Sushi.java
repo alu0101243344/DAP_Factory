@@ -12,4 +12,8 @@ public class Sushi implements IPlatoPescado {
     public String obtenerDescripcion() {
         return "Selección de nigiris y makis de atún y salmón.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/sushi.png";
+    }
 }

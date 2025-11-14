@@ -10,113 +10,127 @@ import java.awt.*;
 
 public class ClienteGUI extends JFrame {
 
-    private final JLabel etiquetaPollo;
-    private final JLabel etiquetaPescado;
-    private final JLabel etiquetaBebida;
-    private final JLabel etiquetaPostre;
-    private final JLabel descPollo;
-    private final JLabel descPescado;
-    private final JLabel descBebida;
-    private final JLabel descPostre;
+    private final JLabel etiquetaNombrePollo, etiquetaNombrePescado, etiquetaNombreBebida, etiquetaNombrePostre;
+    private final JLabel etiquetaDescPollo, etiquetaDescPescado, etiquetaDescBebida, etiquetaDescPostre;
+    private final JLabel etiquetaImgPollo, etiquetaImgPescado, etiquetaImgBebida, etiquetaImgPostre;
 
     public ClienteGUI() {
         setTitle("Restaurante Internacional con Abstract Factory");
-        setSize(600, 400);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout(10, 10));
 
-
         JPanel panelSeleccion = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         panelSeleccion.add(new JLabel("Elige el menú que deseas ver:"));
-
         String[] opcionesMenu = {"Japonés", "Mexicano", "Español"};
         JComboBox<String> comboBoxMenus = new JComboBox<>(opcionesMenu);
         panelSeleccion.add(comboBoxMenus);
         add(panelSeleccion, BorderLayout.NORTH);
 
-
-        JPanel panelDetalles = new JPanel();
-        panelDetalles.setLayout(new GridLayout(4, 2, 10, 15));
+        JPanel panelDetalles = new JPanel(new GridLayout(4, 1, 10, 10));
         panelDetalles.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(), "Platos del Menú Seleccionado", TitledBorder.CENTER, TitledBorder.TOP));
 
-        etiquetaPollo = new JLabel();
-        etiquetaPollo.setFont(new Font("Arial", Font.BOLD, 14));
-        descPollo = new JLabel();
-        panelDetalles.add(etiquetaPollo);
-        panelDetalles.add(descPollo);
+        etiquetaImgPollo = new JLabel();
+        etiquetaNombrePollo = new JLabel();
+        etiquetaDescPollo = new JLabel();
+        panelDetalles.add(crearPanelPlato(etiquetaImgPollo, etiquetaNombrePollo, etiquetaDescPollo));
 
-        etiquetaPescado = new JLabel();
-        etiquetaPescado.setFont(new Font("Arial", Font.BOLD, 14));
-        descPescado = new JLabel();
-        panelDetalles.add(etiquetaPescado);
-        panelDetalles.add(descPescado);
+        etiquetaImgPescado = new JLabel();
+        etiquetaNombrePescado = new JLabel();
+        etiquetaDescPescado = new JLabel();
+        panelDetalles.add(crearPanelPlato(etiquetaImgPescado, etiquetaNombrePescado, etiquetaDescPescado));
 
-        etiquetaBebida = new JLabel();
-        etiquetaBebida.setFont(new Font("Arial", Font.BOLD, 14));
-        descBebida = new JLabel();
-        panelDetalles.add(etiquetaBebida);
-        panelDetalles.add(descBebida);
+        etiquetaImgBebida = new JLabel();
+        etiquetaNombreBebida = new JLabel();
+        etiquetaDescBebida = new JLabel();
+        panelDetalles.add(crearPanelPlato(etiquetaImgBebida, etiquetaNombreBebida, etiquetaDescBebida));
 
-        etiquetaPostre = new JLabel();
-        etiquetaPostre.setFont(new Font("Arial", Font.BOLD, 14));
-        descPostre = new JLabel();
-        panelDetalles.add(etiquetaPostre);
-        panelDetalles.add(descPostre);
-        add(panelDetalles, BorderLayout.CENTER);
+        etiquetaImgPostre = new JLabel();
+        etiquetaNombrePostre = new JLabel();
+        etiquetaDescPostre = new JLabel();
+        panelDetalles.add(crearPanelPlato(etiquetaImgPostre, etiquetaNombrePostre, etiquetaDescPostre));
 
+        add(new JScrollPane(panelDetalles), BorderLayout.CENTER);
 
         comboBoxMenus.addActionListener(e -> {
             String seleccion = (String) comboBoxMenus.getSelectedItem();
-            IFactoriaMenu factoriaSeleccionada = null;
-
+            IFactoriaMenu factoria = null;
             if (seleccion != null) {
                 switch (seleccion) {
                     case "Japonés":
-                        factoriaSeleccionada = new FactoriaMenuJapones();
+                        factoria = new FactoriaMenuJapones();
                         break;
                     case "Mexicano":
-                        factoriaSeleccionada = new FactoriaMenuMexicano();
+                        factoria = new FactoriaMenuMexicano();
                         break;
                     case "Español":
-                        factoriaSeleccionada = new FactoriaMenuEspanol();
+                        factoria = new FactoriaMenuEspanol();
                         break;
                 }
             }
-
-            if (factoriaSeleccionada != null) {
-                mostrarMenu(factoriaSeleccionada);
+            if (factoria != null) {
+                mostrarMenu(factoria);
             }
         });
-
 
         mostrarMenu(new FactoriaMenuJapones());
     }
 
+    private JPanel crearPanelPlato(JLabel imgLabel, JLabel nombreLabel, JLabel descLabel) {
+        JPanel panel = new JPanel(new BorderLayout(15, 15));
+        panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        imgLabel.setPreferredSize(new Dimension(100, 100));
+        imgLabel.setHorizontalAlignment(JLabel.CENTER);
+        panel.add(imgLabel, BorderLayout.WEST);
+
+        JPanel panelTexto = new JPanel(new GridLayout(2, 1));
+        nombreLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        panelTexto.add(nombreLabel);
+        panelTexto.add(descLabel);
+        panel.add(panelTexto, BorderLayout.CENTER);
+        return panel;
+    }
+
     private void mostrarMenu(IFactoriaMenu factoria) {
         Menu menu = new Menu(factoria);
-        etiquetaPollo.setText(menu.getPollo().obtenerNombre());
-        descPollo.setText("<html><p>" + menu.getPollo().obtenerDescripcion() + "</p></html>");
 
-        etiquetaPescado.setText(menu.getPescado().obtenerNombre());
-        descPescado.setText("<html><p>" + menu.getPescado().obtenerDescripcion() + "</p></html>");
+        etiquetaNombrePollo.setText(menu.getPollo().obtenerNombre());
+        etiquetaDescPollo.setText("<html><p>" + menu.getPollo().obtenerDescripcion() + "</p></html>");
+        etiquetaImgPollo.setIcon(cargarImagen(menu.getPollo().obtenerRutaImagen(), 100, 100));
 
-        etiquetaBebida.setText(menu.getBebida().obtenerNombre());
-        descBebida.setText("<html><p>" + menu.getBebida().obtenerDescripcion() + "</p></html>");
+        etiquetaNombrePescado.setText(menu.getPescado().obtenerNombre());
+        etiquetaDescPescado.setText("<html><p>" + menu.getPescado().obtenerDescripcion() + "</p></html>");
+        etiquetaImgPescado.setIcon(cargarImagen(menu.getPescado().obtenerRutaImagen(), 100, 100));
 
-        etiquetaPostre.setText(menu.getPostre().obtenerNombre());
-        descPostre.setText("<html><p>" + menu.getPostre().obtenerDescripcion() + "</p></html>");
+        etiquetaNombreBebida.setText(menu.getBebida().obtenerNombre());
+        etiquetaDescBebida.setText("<html><p>" + menu.getBebida().obtenerDescripcion() + "</p></html>");
+        etiquetaImgBebida.setIcon(cargarImagen(menu.getBebida().obtenerRutaImagen(), 100, 100));
+
+        etiquetaNombrePostre.setText(menu.getPostre().obtenerNombre());
+        etiquetaDescPostre.setText("<html><p>" + menu.getPostre().obtenerDescripcion() + "</p></html>");
+        etiquetaImgPostre.setIcon(cargarImagen(menu.getPostre().obtenerRutaImagen(), 100, 100));
+    }
+
+    private ImageIcon cargarImagen(String ruta, int ancho, int alto) {
+        try {
+            ImageIcon iconoOriginal = new ImageIcon(getClass().getResource(ruta));
+            Image imagen = iconoOriginal.getImage();
+            Image imagenRedimensionada = imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+            return new ImageIcon(imagenRedimensionada);
+        } catch (Exception e) {
+            System.err.println("No se pudo cargar la imagen: " + ruta);
+            return new ImageIcon();
+        }
     }
 
     public static void main(String[] args) {
-
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         SwingUtilities.invokeLater(() -> new ClienteGUI().setVisible(true));
     }
 }

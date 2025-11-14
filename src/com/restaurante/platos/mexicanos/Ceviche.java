@@ -12,4 +12,8 @@ public class Ceviche implements IPlatoPescado {
     public String obtenerDescripcion() {
         return "Pescado fresco marinado en jugo de lima con cilantro, cebolla y chile.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/ceviche.png";
+    }
 }

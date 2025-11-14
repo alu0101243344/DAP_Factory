@@ -12,4 +12,8 @@ public class Margarita implements IBebida {
     public String obtenerDescripcion() {
         return "Cóctel a base de tequila, triple seco y jugo de lima.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/margarita.png";
+    }
 }

@@ -12,4 +12,8 @@ public class PolloAlAjillo implements IPlatoPollo {
     public String obtenerDescripcion() {
         return "Trozos de pollo fritos con abundantes ajos laminados y vino blanco.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/polloalajillo.png";
+    }
 }

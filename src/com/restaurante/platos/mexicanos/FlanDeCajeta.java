@@ -12,4 +12,8 @@ public class FlanDeCajeta implements IPostre {
     public String obtenerDescripcion() {
         return "Flan cremoso bañado en dulce de leche de cabra (cajeta).";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/flandecajeta.png";
+    }
 }

@@ -12,4 +12,8 @@ public class MerluzaEnSalsaVerde implements IPlatoPescado {
     public String obtenerDescripcion() {
         return "Lomos de merluza cocinados en una salsa a base de perejil, ajo y almejas.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/merluzaensalsaverde.png";
+    }
 }

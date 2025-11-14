@@ -12,4 +12,8 @@ public class Sangria implements IBebida {
     public String obtenerDescripcion() {
         return "Bebida refrescante a base de vino tinto y trozos de fruta.";
     }
+    @Override
+    public String obtenerRutaImagen() {
+        return "/images/sangria.png";
+    }
 }

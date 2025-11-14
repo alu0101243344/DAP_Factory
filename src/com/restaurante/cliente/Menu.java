@@ -9,6 +9,22 @@ public class Menu {
     private final IBebida bebida;
     private final IPostre postre;
 
+    public IPlatoPollo getPollo() {
+        return pollo;
+    }
+
+    public IPlatoPescado getPescado() {
+        return pescado;
+    }
+
+    public IBebida getBebida() {
+        return bebida;
+    }
+
+    public IPostre getPostre() {
+        return postre;
+    }
+
     public Menu(IFactoriaMenu factoria) {
         this.pollo = factoria.crearPlatoPollo();
         this.pescado = factoria.crearPlatoPescado();
